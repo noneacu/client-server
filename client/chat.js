@@ -20,6 +20,7 @@ socket.on('welcome-message', (data) => {
   channel = data.id;
   users = data.users;
   addMessage(data, false);
+
 })
 
 
@@ -37,9 +38,7 @@ function addMessage(data, isSelf = false) {
     if (data.user === 'server') {
       // message is from the server, like a notification of new user connected
       // messageElement.classList.add('others-message')
-      messageElement.innerText = `${data.message} Chat with `
-      console.log(users);
-      document.getElementById("users").innerHTML = JSON.stringify(users);
+      messageElement.innerText = `${data.message} Chat with ${JSON.stringify(Object.values(users))} `
     } else {
       // message is from other user
       messageElement.classList.add('others-message')
